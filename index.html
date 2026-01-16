@@ -1,0 +1,93 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Ancient Pillars Flappy</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- 16:9 container that scales to viewport -->
+    <div id="screen-wrapper">
+      <!-- Canvas for main gameplay -->
+      <canvas id="gameCanvas" width="1280" height="720" aria-label="Flappy Bird game canvas"></canvas>
+
+      <!-- Menu overlay -->
+      <div id="menu" class="overlay">
+        <div class="menu-panel">
+          <h1 class="title">Ancient Pillars</h1>
+          <div class="menu-buttons">
+            <button id="btnNew" class="btn btn-new">New Game</button>
+            <button id="btnSettings" class="btn btn-settings">Settings</button>
+            <button id="btnQuit" class="btn btn-quit">Quit</button>
+          </div>
+          <p class="hint">Click or press Space to start control</p>
+        </div>
+      </div>
+
+      <!-- Settings overlay -->
+      <div id="settings" class="overlay hidden">
+        <div class="settings-panel">
+          <h2>Settings</h2>
+          <div class="setting-row">
+            <label>Bird body color</label>
+            <input type="color" id="birdColor" value="#2ecc71" />
+          </div>
+          <div class="setting-row">
+            <label>Bird eye size</label>
+            <input type="range" id="eyeSize" min="4" max="24" value="12" />
+          </div>
+          <div class="setting-row">
+            <label>Sound volume</label>
+            <input type="range" id="sfxVol" min="0" max="1" step="0.01" value="0.8" />
+          </div>
+          <div class="setting-row">
+            <label>Music volume</label>
+            <input type="range" id="musicVol" min="0" max="1" step="0.01" value="0.4" />
+          </div>
+          <div class="setting-row">
+            <label>Mute all</label>
+            <input type="checkbox" id="muteAll" />
+          </div>
+          <div class="settings-actions">
+            <button id="saveSettings" class="btn btn-settings">Save</button>
+            <button id="closeSettings" class="btn">Close</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Countdown overlay -->
+      <div id="countdown" class="overlay hidden">
+        <div class="countdown-panel"><span id="countdownText">3</span></div>
+      </div>
+
+      <!-- Game over overlay -->
+      <div id="gameOver" class="overlay hidden">
+        <div class="gameover-panel">
+          <h2>Game Over</h2>
+          <p id="finalScore">Score: 0</p>
+          <div class="gameover-actions">
+            <button id="btnRestart" class="btn btn-new">Restart</button>
+            <button id="btnMenu" class="btn">Menu</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top HUD -->
+      <div id="hud" class="hud">
+        <div id="score">0</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio placeholders (replace src with actual files) -->
+  <audio id="bgm" loop preload="auto" src="assets/bgm.mp3"></audio>
+  <audio id="sfxFlap" preload="auto" src="assets/flap.wav"></audio>
+  <audio id="sfxPoint" preload="auto" src="assets/point.wav"></audio>
+  <audio id="sfxHit" preload="auto" src="assets/hit.wav"></audio>
+
+  <script src="game.js" defer></script>
+</body>
+</html>
