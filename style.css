@@ -1,0 +1,163 @@
+/* styles.css */
+/* Modern, advanced styling with responsive 16:9 full-screen layout */
+
+/* Reset & base */
+:root{
+  --bg: linear-gradient(#87CEEB, #bfe9ff);
+  --panel-bg: rgba(255,255,255,0.85);
+  --glass: rgba(255,255,255,0.06);
+  --accent: #2ecc71;
+  --btn-new: #2ecc71;
+  --btn-settings: #3498db;
+  --btn-quit: #e74c3c;
+  --font-sans: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body,#app{height:100%}
+body{
+  font-family:var(--font-sans);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:env(safe-area-inset);
+}
+
+/* 16:9 container that scales to viewport while preserving aspect ratio */
+#screen-wrapper{
+  width:100%;
+  max-width:1600px;
+  aspect-ratio:16/9;
+  background:var(--bg);
+  position:relative;
+  overflow:hidden;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Canvas fills container */
+#gameCanvas{
+  width:100%;
+  height:100%;
+  display:block;
+  background:transparent;
+}
+
+/* Overlays */
+.overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:auto;
+}
+
+.hidden{display:none}
+
+/* Menu panel */
+.menu-panel{
+  width:min(520px,90%);
+  background:var(--panel-bg);
+  border-radius:12px;
+  padding:28px;
+  text-align:center;
+  box-shadow:0 8px 24px rgba(0,0,0,0.12);
+  backdrop-filter: blur(6px) saturate(120%);
+}
+
+.title{
+  font-size:2.2rem;
+  margin-bottom:12px;
+  color:#2b3a42;
+  letter-spacing:1px;
+}
+
+.menu-buttons{display:flex;gap:12px;justify-content:center;margin:18px 0}
+.btn{
+  padding:12px 18px;
+  border-radius:8px;
+  border:0;
+  cursor:pointer;
+  font-weight:600;
+  color:#fff;
+  min-width:110px;
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+.btn:active{transform:translateY(2px)}
+.btn-new{background:var(--btn-new)}
+.btn-settings{background:var(--btn-settings)}
+.btn-quit{background:var(--btn-quit)}
+.hint{color:#2b3a42;opacity:0.85;margin-top:8px}
+
+/* Settings panel */
+.settings-panel{
+  width:min(640px,94%);
+  background:var(--panel-bg);
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.12);
+}
+.setting-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin:12px 0;
+}
+.setting-row label{font-weight:600;color:#2b3a42}
+.settings-actions{display:flex;gap:12px;justify-content:flex-end;margin-top:12px}
+
+/* Countdown */
+.countdown-panel{
+  background:rgba(0,0,0,0.6);
+  color:#fff;
+  padding:36px 48px;
+  border-radius:12px;
+  font-size:4rem;
+  font-weight:700;
+  letter-spacing:2px;
+}
+
+/* Game over */
+.gameover-panel{
+  background:var(--panel-bg);
+  padding:22px;
+  border-radius:12px;
+  text-align:center;
+  width:min(520px,90%);
+}
+.gameover-actions{display:flex;gap:12px;justify-content:center;margin-top:12px}
+
+/* HUD */
+.hud{
+  position:absolute;
+  top:12px;
+  left:12px;
+  z-index:20;
+  color:#fff;
+  text-shadow:0 2px 6px rgba(0,0,0,0.5);
+}
+#score{
+  background:rgba(0,0,0,0.35);
+  padding:8px 12px;
+  border-radius:8px;
+  font-weight:700;
+  min-width:56px;
+  text-align:center;
+}
+
+/* Responsive adjustments for small screens */
+@media (max-width:720px){
+  #screen-wrapper{border-radius:0}
+  .title{font-size:1.6rem}
+  .countdown-panel{font-size:3rem;padding:20px 28px}
+  .menu-panel{padding:18px}
+  .settings-panel{padding:14px}
+}
+
+/* Ancient pillar style (used in canvas drawing as CSS-like reference) */
+/* We will draw pillars in canvas with stone texture look via gradients and simple patterns. */
